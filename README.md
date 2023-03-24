@@ -2,4 +2,4 @@
 
 A boosted, decentralized and incentivized version of Spotify, I mean a better version
 
-WILL BE UPDATED 
+WILL BE UPDATED TODAY
