@@ -1,18 +1,23 @@
-import React from 'react';
-import './App.css';
-import Navbar from './Navbar';
-import SearchBar from './SearchBar';
-import Categories from './Categories';
-import Footer from './Footer';
+import React from "react";
+import "./App.css";
+
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Import Pages
+import Homepage from "./Pages/Homepage";
+import Profile from "./Pages/Profile";
 
 const App = () => {
   return (
-    <div className="app">
-      <Navbar />
-      <SearchBar />
-      <Categories />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Homepage />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
