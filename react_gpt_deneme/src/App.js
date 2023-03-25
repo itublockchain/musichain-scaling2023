@@ -1,3 +1,4 @@
+import { ethers } from 'ethers';
 import React from "react";
 import "./App.css";
 
@@ -7,6 +8,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Import Pages
 import Homepage from "./Pages/Homepage";
 import Profile from "./Pages/Profile";
+
+
+const provider = new ethers.providers.JsonRpcProvider(
+  'https://alpha-rpc.scroll.io/l2'
+);
+
+const initialNetwork = NETWORKS.scrollAlpha;
 
 const App = () => {
   return (
@@ -20,5 +28,8 @@ const App = () => {
     </BrowserRouter>
   );
 };
+
+
+
 
 export default App;

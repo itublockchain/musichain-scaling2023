@@ -1,24 +1,29 @@
-import { ethers } from "hardhat";
+import { HardhatRuntimeEnvironment } from 'hardhat/types';
+import { DeployFunction } from 'hardhat-deploy/types';
+import { ethers } from 'hardhat';
+import { ForUser__factory } from './typechain';
 
-async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
+  const { deployments, getNamedAccounts } = hre;
+  const { deploy } = deployments;
+  const { deployer } = await getNamedAccounts();
 
-  const lockedAmount = ethers.utils.parseEther("0.001");
+  // Deploy the contract
+  await deploy('User', {
+    from: deployer,
+    args: [/* pass any constructor arguments here if needed */],
+    log: true,
+  });
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  // Get a signer to use for interacting with the contract
+  const signer = await ethers.getSigner(deployer);
 
-  await lock.deployed();
+  // Get the deployed contract
+  const contractFactory = new ForUser__factory(signer);
+  const contract = await contractFactory.deploy();
 
-  console.log(
-    `Lock with ${ethers.utils.formatEther(lockedAmount)}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  );
-}
+  // Print the contract address
+  console.log('Contract deployed to address:', contract.address);
+};
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+export default func;
