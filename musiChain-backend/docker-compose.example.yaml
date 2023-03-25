@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  polynote-api:
+    image: asgarovfarhad/polynote-api:1.0.0
+    container_name: polynote-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    environment:
+      - APP_CORS=*
+      - APP_PORT=8000
+      - API_VERSION=1
+      - APP_VERSION=development
+      - PRIVATE_KEY=
+      - ENCRYPTION_KEY=[]
+      - NETWORK_RPC_URL=https://alpha-rpc.scroll.io/l2
+      - POLYNOTE_CONTRACT_SCROLL=
+      - DB_NAMESPACE=polybase
+    platform: linux/amd64
+    restart: always

@@ -1,5 +1,5 @@
 {
-  "name": "betterthanspotify_scalingethereum2023",
+  "name": "blockchain_music_app",
   "version": "1.0.0",
   "description": "A boosted, decentralized and incentivized version of Spotify, I mean a better version",
   "main": "index.js",
@@ -192,12 +192,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/itublockchain/betterthanspotify_scalingethereum2023.git"
-  },
+  "repository": "https://github.com/itublockchain/musiChain-scaling2023",
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/itublockchain/betterthanspotify_scalingethereum2023/issues"
   },

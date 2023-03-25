@@ -1,0 +1,11 @@
+.search-bar {
+    background-color: #e0e0e0;
+    height: 50px;
+  }
+  
+.search-bar input {
+width: 100%;
+border: none;
+background-color: #e0e0e0;
+font-size: 18px;
+}
